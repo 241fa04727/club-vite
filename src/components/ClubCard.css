@@ -1,0 +1,36 @@
+.club-card { position:relative; display:flex; flex-direction:column; gap:10px; padding:24px; background:var(--surface); border:1.5px solid var(--border); border-radius:var(--r-md); text-align:left; overflow:hidden; transition:transform .15s,box-shadow .15s,border-color .15s; cursor:pointer; width:100%; }
+.club-card:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,.09); }
+
+.card-accent { position:absolute; top:0; left:0; bottom:0; width:4px; }
+.cat-coding .card-accent   { background:var(--coding); }
+.cat-sports .card-accent   { background:var(--sports); }
+.cat-arts .card-accent     { background:var(--arts); }
+.cat-entrepreneurship .card-accent { background:var(--entrep); }
+.cat-science .card-accent  { background:var(--science); }
+.cat-social .card-accent   { background:var(--social); }
+
+.cat-coding:hover   { border-color:var(--coding); }
+.cat-sports:hover   { border-color:var(--sports); }
+.cat-arts:hover     { border-color:var(--arts); }
+.cat-entrepreneurship:hover { border-color:var(--entrep); }
+.cat-science:hover  { border-color:var(--science); }
+.cat-social:hover   { border-color:var(--social); }
+
+.card-header { display:flex; align-items:center; justify-content:space-between; }
+.card-emoji { font-size:22px; }
+.badge { font-size:11px; font-weight:600; text-transform:capitalize; padding:3px 9px; border-radius:20px; color:#fff; }
+.badge-coding        { background:var(--coding); }
+.badge-sports        { background:var(--sports); }
+.badge-arts          { background:var(--arts); }
+.badge-entrepreneurship { background:var(--entrep); }
+.badge-science       { background:var(--science); }
+.badge-social        { background:var(--social); }
+
+.card-name { font-size:18px; font-weight:700; color:var(--ink); }
+.card-tagline { font-size:13.5px; color:var(--muted); line-height:1.45; }
+.card-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.card-tag { font-size:12px; padding:3px 9px; background:var(--bg); border-radius:20px; color:var(--muted); border:1px solid var(--border); }
+.card-footer { display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:12px; border-top:1px solid var(--border); font-size:12.5px; }
+.card-members { display:flex; align-items:center; gap:6px; color:var(--muted); }
+.dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#22C55E; }
+.card-selective { font-size:11px; font-weight:500; background:#FEF3C7; color:#92400E; padding:2px 8px; border-radius:20px; }

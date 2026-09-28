@@ -1,0 +1,29 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:     #F0EDE8;
+  --surface:#FFFFFF;
+  --ink:    #1A1714;
+  --muted:  #7A736C;
+  --border: #DDD9D3;
+  --coding: #2D6BE4;
+  --sports: #17A34A;
+  --arts:   #C026D3;
+  --entrep: #EA580C;
+  --science:#0891B2;
+  --social: #D97706;
+  --r-sm:   6px;
+  --r-md:   14px;
+  --r-lg:   22px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.55;
+}
+
+h1,h2,h3 { font-family: 'Fraunces', serif; line-height: 1.15; }
+button { cursor: pointer; font-family: inherit; }
