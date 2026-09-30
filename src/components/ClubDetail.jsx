@@ -3,6 +3,8 @@ import './ClubDetail.css'
 
 const EMOJI = { coding:'💻', sports:'⚽', arts:'🎨', entrepreneurship:'🚀', science:'🔭', social:'🌍' }
 
+const WEB3FORMS_KEY = '195a36d9-7ac4-4c29-9d94-fbe64280087a'
+
 /* ── Interest Form ─────────────────────────────── */
 function InterestForm({ club, onClose, onSubmit }) {
   const [form, setForm] = useState({ name:'', email:'', year:'', message:'' })
@@ -28,7 +30,31 @@ function InterestForm({ club, onClose, onSubmit }) {
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setLoading(true)
-    await new Promise(r => setTimeout(r, 1200)) // simulate API call
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Interest: ${form.name} wants to join ${club.name}`,
+          from_name: form.name,
+          replyto: form.email,
+          name: form.name,
+          email: form.email,
+          year_of_study: form.year,
+          club_name: club.name,
+          club_contact: club.contact,
+          message: form.message || '(no message provided)',
+          botcheck: '',
+        }),
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.message || 'Submission failed')
+    } catch (err) {
+      setLoading(false)
+      setErrors({ submit: 'Failed to send — please try again or email the club directly.' })
+      return
+    }
     setLoading(false)
     onSubmit({ ...form, club: club.name })
   }
@@ -98,6 +124,12 @@ function InterestForm({ club, onClose, onSubmit }) {
             <span>📧 Your interest will be sent to</span>
             <strong>{club.contact}</strong>
           </div>
+
+          {errors.submit && (
+            <p style={{color:'#DC2626',fontSize:'13px',marginBottom:'8px',textAlign:'center'}}>
+              ⚠️ {errors.submit}
+            </p>
+          )}
 
           <button type="submit" className={`btn-submit btn-submit--${club.category}`} disabled={loading}>
             {loading
